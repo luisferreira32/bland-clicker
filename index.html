@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>Bland clicker</title>
+        <style>
+            body { text-align: center; font-family: monospace; }
+            #content { position: absolute; padding-left: 30%; }
+            #click_bttn { height: 200px; width: 200px; border: 5px solid black; border-radius: 50%; display: inline-block; text-align: center; line-height: 200px; }
+            #click_bttn:active { background-color: black; color: white; }
+            #factory_container{ position: absolute; width: 600px; }
+            .factory_bttn { width: 200px; height: 20px; background-color: white; float: left; font-family: monospace;}
+        </style>
+    </head>
+    <body>
+        <div id="content">            
+            <h1> Bland clicker </h1>
+            <h2> Unbelieavble! It's the blandest clicker ever!!! </h2>
+            <button id='click_bttn'> Click on me! </button>
+            <h3> Points: <span id='clicks'>0</span>C</h3>   
+            <div id="factory_container">
+                <p><button id='sweatshop_bttn' class="factory_bttn"> Buy! (<span id='sweatshop_price'>1</span>C) </button> Sweatshops:<span id='sweatshops'>0</span> </p>
+                <p><button id='pounder_bttn' class="factory_bttn"> Buy! (<span id='pounder_price'>5</span>C) </button> Pounding hammer:<span id='pounders'>0</span> </p>
+                <p><button id='cheap_hacks_bttn' class="factory_bttn"> Buy! (<span id='cheap_hacks_price'>10</span>C) </button> Cheap hacks:<span id='cheap_hacks'>0</span> </p>
+                <p><button id='hacker_bttn' class="factory_bttn"> Buy! (10,000C) </button> <span id='hacker_code'>???</span> </p>
+            </div> 
+        </div>
+        
+        <script>
+            // variables
+            var total_clicks = 0
+            var click_per_second = 1
+            // update on click
+            var element = document.getElementById('click_bttn').onclick = function() { 
+                total_clicks += 1
+                document.getElementById('clicks').innerHTML = String(total_clicks)
+            };
+            // update on tick
+            function updateTotalClicks(){
+                total_clicks += click_per_second
+                document.getElementById('clicks').innerHTML = String(total_clicks)
+            }
+            setInterval(updateTotalClicks, 1000);
+            // our click factories
+            // sweatshop
+            var sweatshops = 0
+            var sweatshop_price = 1
+            var element = document.getElementById('sweatshop_bttn').onclick = function() { 
+                if(total_clicks >= sweatshop_price){
+                    total_clicks -= sweatshop_price
+                    sweatshops += 1
+                    sweatshop_price += Math.round(sweatshop_price*1.2)
+                    click_per_second = sweatshops*2
+                }
+                document.getElementById('sweatshop_price').innerHTML = String(sweatshop_price)
+                document.getElementById('sweatshops').innerHTML = String(sweatshops)
+                document.getElementById('clicks').innerHTML = String(total_clicks)
+            };
+            // pounder
+            var pounders = 0
+            var pounder_price = 5
+            var element = document.getElementById('pounder_bttn').onclick = function() { 
+                if(total_clicks >= pounder_price){
+                    total_clicks -= pounder_price
+                    pounders += 1
+                    pounder_price += Math.round(pounder_price*1.15)
+                    click_per_second = pounders*5
+                }
+                document.getElementById('pounder_price').innerHTML = String(pounder_price)
+                document.getElementById('pounders').innerHTML = String(pounders)
+                document.getElementById('clicks').innerHTML = String(total_clicks)
+            };
+            // cheap hacks
+            var cheap_hacks = 0
+            var cheap_hacks_price = 10
+            var element = document.getElementById('cheap_hacks_bttn').onclick = function() { 
+                if(total_clicks >= cheap_hacks_price){
+                    total_clicks -= cheap_hacks_price
+                    cheap_hacks += 1
+                    cheap_hacks_price += Math.round(cheap_hacks_price*1.10)
+                    click_per_second = cheap_hacks*8
+                }
+                document.getElementById('cheap_hacks_price').innerHTML = String(cheap_hacks_price)
+                document.getElementById('cheap_hacks').innerHTML = String(cheap_hacks)
+                document.getElementById('clicks').innerHTML = String(total_clicks)
+            };
+            // hacker help
+            var hacker_help_price = 10000
+            var hacker_help = '?t?o?t?a?l??_?c?l?i?c?k??s?=?an?y?_nu?m?ber?'
+            var element = document.getElementById('hacker_bttn').onclick = function() { 
+                if(total_clicks >= hacker_help_price){
+                    total_clicks -= hacker_help_price
+                    hacker_help=hacker_help.replace('?', '')
+                }
+                document.getElementById('hacker_code').innerHTML = hacker_help
+            };
+        </script>
+    </body>
+</html>
