@@ -48,7 +48,7 @@
                     total_clicks -= sweatshop_price
                     sweatshops += 1
                     sweatshop_price += Math.round(sweatshop_price*1.2)
-                    click_per_second = sweatshops*2
+                    click_per_second += sweatshops*2
                 }
                 document.getElementById('sweatshop_price').innerHTML = String(sweatshop_price)
                 document.getElementById('sweatshops').innerHTML = String(sweatshops)
@@ -62,7 +62,7 @@
                     total_clicks -= pounder_price
                     pounders += 1
                     pounder_price += Math.round(pounder_price*1.15)
-                    click_per_second = pounders*5
+                    click_per_second += pounders*5
                 }
                 document.getElementById('pounder_price').innerHTML = String(pounder_price)
                 document.getElementById('pounders').innerHTML = String(pounders)
@@ -76,7 +76,7 @@
                     total_clicks -= cheap_hacks_price
                     cheap_hacks += 1
                     cheap_hacks_price += Math.round(cheap_hacks_price*1.10)
-                    click_per_second = cheap_hacks*8
+                    click_per_second += cheap_hacks*8
                 }
                 document.getElementById('cheap_hacks_price').innerHTML = String(cheap_hacks_price)
                 document.getElementById('cheap_hacks').innerHTML = String(cheap_hacks)
